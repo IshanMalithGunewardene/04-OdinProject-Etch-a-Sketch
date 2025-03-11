@@ -1,13 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .grand_parent {
+            border: 1px solid black;
+            height: 362px;
+            width: 1000px;
+            background-color: rgb(130, 148, 148);
+            
+        }
+
+        .parent {
+            display: flex;
+            flex-wrap: wrap;
+            width: 1000px;
+            
+
+        }
+
+        .child {
+            width: 10px;
+            height: 10px;
+            background-color: #0000ff;
+            border: 1px solid black;
+        }
+    </style>
+
 </head>
+
 <body>
-    <div class="board"></div>
-    <script src="script.js"></script>
+    <h1>Clcik the button as much as grids you need</h1>
+    <button id="grid50_btn">50x 50 Grid</button>
+    <div class="grand_parent">
+        <div class="parent">
+        </div>
+    </div>
+
+
+    <script>
+        let grid50_btn = document.getElementById('grid50_btn');
+        grid50_btn.addEventListener('click', function () {
+            let parent = document.querySelectorAll('.parent');
+            let divs = '<div class="child"></div>'.repeat(2490);
+            parent[0].innerHTML += divs;
+
+
+
+            let child_selector = document.querySelectorAll('.parent > .child');
+
+            for (let i = 0; i < child_selector.length; i++) {
+                child_selector[i].addEventListener('mouseover', function (e) {
+                    if (e.target.className == 'child') {
+                        child_selector[i].style.backgroundColor = "red";
+                    }
+                }
+                );
+            }
+
+        })
+
+    </script>
 </body>
+
 </html>
